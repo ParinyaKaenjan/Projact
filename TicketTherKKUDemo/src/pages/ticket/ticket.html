@@ -1,0 +1,73 @@
+<!--
+  Generated template for the TicketPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="dark" text-center>
+        <ion-title>TicketMovie</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding style="background-color: whitesmoke;">
+
+    <ion-list no-lines *ngFor="let t of ticket">
+        <ion-item>
+            <ion-row>
+                <ion-col col-5>
+                    <img src="{{t.imgticket}}" alt="">
+                </ion-col>
+                <ion-col col-1>
+                </ion-col>
+                <ion-col col-6>
+                    <h2>ชื่อหนัง</h2>
+                    <p>{{t.namemovie}}</p>
+                    <h3>รอบฉาย</h3>
+                    <p> {{t.showtime}}</p>
+                    <h3>ราคาตั๋ว</h3>
+                    <p>ใบละ {{t.typeticket}}</p>
+                    <h3>จำนวนตั๋ว </h3>
+                    <p>{{t.totalticket}} ใบ</p>
+                    <h3>ราคารวม </h3>
+                    <p>{{t.totalprice}} BTH</p>
+                    <p style="color: red;">!ก่อนใช้ตั๋วแจ้งพนักงานก่อน</p>
+
+                    <button ion-button outline (click)="useticket(t._id,t.ticketstatus)">ใช้ตั๋ว</button>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <br>
+    </ion-list>
+
+</ion-content>
+
+
+<ion-footer style="background-color:black">
+    <ion-row text-center>
+        <ion-col col-4>
+
+            <button ion-button small clear color="light" (click)="goHomeTicketPage()">
+                <ion-icon name="home"> home</ion-icon>
+            </button>
+
+        </ion-col>
+
+        <ion-col col-4>
+
+            <button ion-button small clear color="light" disabled="true" (click)="goTicketPage()">
+                <ion-icon name="Ticket">Ticket</ion-icon>
+            </button>
+
+        </ion-col>
+
+        <ion-col col-4>
+            <button ion-button small clear color="light" (click)="goUserPage()">
+                <ion-icon name="contact">User</ion-icon>
+            </button>
+        </ion-col>
+    </ion-row>
+
+</ion-footer>

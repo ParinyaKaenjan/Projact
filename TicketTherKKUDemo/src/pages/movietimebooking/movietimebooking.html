@@ -1,0 +1,99 @@
+<!--
+  Generated template for the MovietimebookingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="dark">
+        <ion-title>
+            <!-- <img src="https://upload.wikimedia.org/wikipedia/th/0/01/Sf-ipad.png" alt="" width="25px"> -->
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content style="background-color:ghostwhite">
+    <ion-grid>
+        <ion-row style="background-color:white">
+            <!-- <div>
+                <h4 text-center>เลือกรอบฉาย</h4>
+            </div> -->
+        </ion-row>
+        <br>
+
+        <ion-row style="background-color:white;padding-top:3px;padding-bottom:2px;">
+
+            <ion-col col-4>
+                <div style="padding:3px">
+                    <img src="{{imgmovie}}" height="auto" width="200px">
+                </div>
+            </ion-col>
+            <ion-col col-8>
+                <ion-label>คณะที่จัดแสดง : {{faculty}}</ion-label>
+                <p> {{moviename}} | เวลา {{showtime}} นาที </p>
+                <label> ตั๋วที่มีอยู่ </label><label style="color: red;"> {{totalticket}} </label>
+                <img src="https://image.flaticon.com/icons/png/128/389/389801.png" width="20" height="auto">
+                <br>
+                <br>
+                <button ion-button small outline (click)="godetail(movieM)"> รายละเอียดภาพยนต์</button>
+            </ion-col>
+
+        </ion-row>
+        <br>
+
+        <ion-list radio-group [(ngModel)]="Rank" (ionChange)="sumticket()">
+            <ion-list-header text-center>
+                ชนิดของตั๋ว
+            </ion-list-header>
+            <ion-item>
+                <ion-label>Vip</ion-label>
+                <ion-radio value="{{ticketvip}}" name="Vip"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label>Nomal</ion-label>
+                <ion-radio value="{{ticketnomal}}" name="Nomal"></ion-radio>
+            </ion-item>
+        </ion-list>
+
+        <ion-list text-center>
+            <ion-item>
+                <ion-label>Ticket</ion-label>
+                <ion-select [(ngModel)]="Ticket" (ionChange)="sumticket()">
+                    <ion-option value="1">1</ion-option>
+                    <ion-option value="2">2</ion-option>
+                    <ion-option value="3">3</ion-option>
+                    <ion-option value="4">4</ion-option>
+                    <ion-option value="5">5</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item>
+                <ion-label>Time</ion-label>
+                <ion-select [(ngModel)]="time" (ionChange)="sumticket()">
+                    <ion-option value="10:00">10:00</ion-option>
+                    <ion-option value="12:00">12:00</ion-option>
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="16:00">16:00</ion-option>
+                    <ion-option value="18:00">18:00</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-list>
+
+        <div>
+            <ion-item text-center>
+                <ion-label>ชนิดราคาตั๋ว :{{Rank}}</ion-label>
+                <ion-label>รอบฉาย :{{time}}</ion-label>
+            </ion-item>
+        </div>
+
+        <div>
+            <ion-label text-center>
+                ราคารวม :{{PriceTicket}}
+            </ion-label>
+        </div>
+
+        <button ion-button (click)="bookingmovie()">ซื้อตั๋ว</button>
+
+    </ion-grid>
+
+</ion-content>
