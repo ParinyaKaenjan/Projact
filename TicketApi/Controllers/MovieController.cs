@@ -56,6 +56,12 @@ namespace TicketApi.Controllers
             var getID = CollectionMovie.Find(it => it._id == idmovie.ToString()).FirstOrDefault();
             return getID;
         }
+        [HttpGet("{iduser}")]
+        public List<Movie> GetMovieofIduser(string iduser)
+        {
+            var getmoviebyiduser = CollectionMovie.Find(it => it.iduser == iduser).ToList();
+            return getmoviebyiduser;
+        }
 
         [HttpPost]
         public void Createmovie([FromBody]Movie Createmovie)
@@ -63,6 +69,7 @@ namespace TicketApi.Controllers
             var Newmovie = new Movie()
             {
                 _id = Guid.NewGuid().ToString(),
+                iduser = Createmovie.iduser,
                 img = Createmovie.img,
                 faculty = Createmovie.faculty,
                 showtime = Createmovie.showtime,

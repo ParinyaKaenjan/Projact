@@ -47,8 +47,21 @@ namespace TicketApi.Controllers
         public List<Ticket> getbyID(string iduser)
         {
             var getticket = CollectionTicket.Find(it => it.iduser == iduser && it.ticketstatus == true).ToList();
-
             return getticket;
+        }
+
+        [HttpGet("{idmovie}")]
+        public List<Ticket> getUnuseticketByIdmovie(string idmovie)
+        {
+            var getticket = CollectionTicket.Find(it => it.idmovie == idmovie && it.ticketstatus == true).ToList();
+            return getticket;
+        }
+
+        [HttpGet("{idmovie}")]
+        public List<Ticket> getUseticketByIdmovie(string idmovie)
+        {
+            var sumticket = CollectionTicket.Find(it => it.idmovie == idmovie && it.ticketstatus == false).ToList();
+            return sumticket;
         }
 
         [HttpPost("{iduser}")]
@@ -58,6 +71,7 @@ namespace TicketApi.Controllers
             {
                 _id = Guid.NewGuid().ToString(),
                 iduser = iduser,
+                idmovie = ticket.idmovie,
                 imgticket = ticket.imgticket,
                 namemovie = ticket.namemovie,
                 typeticket = ticket.typeticket,
@@ -91,11 +105,12 @@ namespace TicketApi.Controllers
             var def = Builders<Movie>.Update.Set(it => it.totalticket, sum.ToString());
             CollectionMovie.UpdateOne(it => it._id == id, def);
         }
+
         [HttpPost("{id}")]
         public void UseTicket(string id)
         {
-            var dd = CollectionTicket.Find(it => it._id == id).FirstOrDefault();
-            CollectionTicket.UpdateOne(it => it._id == id, Builders<Ticket>.Update.Set(it => dd.ticketstatus, false));
+            // var dd = CollectionTicket.Find(it => it._id == id).FirstOrDefault();
+            CollectionTicket.UpdateOne(it => it._id == id, Builders<Ticket>.Update.Set(it => it.ticketstatus, false));
         }
 
     }

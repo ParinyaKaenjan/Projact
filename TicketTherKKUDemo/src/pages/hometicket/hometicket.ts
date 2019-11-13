@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MovietimebookingPage } from '../movietimebooking/movietimebooking';
 import { UserPage } from '../user/user';
 import { TicketPage } from '../ticket/ticket';
-import { MovietabPage } from '../movietab/movietab';
 import { ConnectApiProvider } from '../../providers/connect-api/connect-api';
 import { MovieModel } from '../../models/MovieModel';
 import { UserModel } from '../../models/UsersModel';

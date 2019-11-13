@@ -1,6 +1,7 @@
 export class TicketModel {
     _id: string;
-    Iduser: string;
+    iduser: string;
+    idmovie: string;
     imgticket: string;
     namemovie: string;
     typeticket: Number;

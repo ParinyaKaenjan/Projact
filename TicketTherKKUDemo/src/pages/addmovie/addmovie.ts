@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, Toast, ToastContr
 import { MovieModel } from '../../models/MovieModel';
 import { ConnectApiProvider } from '../../providers/connect-api/connect-api';
 import { HometicketPage } from '../hometicket/hometicket';
+import { e } from '@angular/core/src/render3';
 
 /**
  * Generated class for the AddmoviePage page.
@@ -21,6 +22,8 @@ export class AddmoviePage {
   movie: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public conncetAPI: ConnectApiProvider, public alert: AlertController, public toast: ToastController) {
+    this.newMovie.iduser = this.conncetAPI.user._id;
+    //this.newMovie.img = null;
     this.getAllMovie();
   }
 
@@ -35,34 +38,21 @@ export class AddmoviePage {
   }
   CreateMovie() {
     const popup = this.toast.create({
-      message: 'กรุณากรองข้อมูลให้ครบ'
+      message: 'กรุณากรองข้อมูลให้ครบ',
+      duration: 3000
     });
-    const confrim = this.alert.create({
-      title: "ยืนยันการสร้าง",
-      message: "คุณต้องการจะสร้างหรือไม่",
-      buttons: [{
-        text: "ยกเลิก",
-        handler: () => {
-          console.log("ยกเลิก");
-        }
-      },
-      {
-        text: "ตกลง",
-        handler: () => {
-          if (this.newMovie = null) {
-            popup.present();
-          }
-          else {
-            this.conncetAPI.createmovie(this.newMovie).subscribe(data => {
-              this.navCtrl.setRoot(HometicketPage);
-            });
-            console.log("ตกลง");
-          }
-        }
-      }]
-    });
+    if (this.newMovie.img == null || this.newMovie.img == "" || this.newMovie.namemovie == null || this.newMovie.namemovie == "" || this.newMovie.showtime == null || this.newMovie.showtime == "" || this.newMovie.ticketvip == 0 || this.newMovie.ticketnomal == 0 || this.newMovie.totalticket == null || this.newMovie.totalticket == "") {
+      //if (this.newMovie.img == null && this.newMovie.img == "" && this.newMovie.namemovie == null && this.newMovie.namemovie == "" && this.newMovie.showtime == null && this.newMovie.showtime == "" && this.newMovie.ticketvip == 0 && this.newMovie.ticketnomal == 0 && this.newMovie.totalticket == null && this.newMovie.totalticket == "") {
+      console.log("ok");
+      popup.present();
+    }
+    else {
+      console.log(this.newMovie);
+      this.conncetAPI.createmovie(this.newMovie).subscribe(data => {
+        this.navCtrl.pop();
+      });
+    }
     console.log(this.newMovie);
-    confrim.present();
   }
 
 }

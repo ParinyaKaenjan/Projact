@@ -53,7 +53,7 @@ export class LoginPage {
       this.connecAPI.login(this.Username, this.Password).subscribe(data => {
         this.connecAPI.user = data;
         if (this.connecAPI.user == null) {
-          //alert.present();
+          alert.present();
         }
         else {
           this.navCtrl.setRoot(HometicketPage);

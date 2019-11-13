@@ -8,6 +8,7 @@ namespace TicketApi.Models
         [BsonId]
         public string _id { get; set; }
         public string iduser { get; set; }
+        public string idmovie { get; set; }
         public string imgticket { get; set; }
         public string namemovie { get; set; }
         public int typeticket { get; set; }

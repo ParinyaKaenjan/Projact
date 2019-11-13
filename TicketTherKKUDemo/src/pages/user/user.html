@@ -33,17 +33,23 @@
     <!-- <button ion-button clear>Edit</button> -->
 
   </div>
-
   <button ion-button round (click)="logout()">
-    <ion-icon name="exit"> Logout</ion-icon>
+    <ion-icon name="exit"> Logout </ion-icon>
   </button>
+
+  <ion-fab right bottom>
+    <button ion-fab (click)="viewtotal()">
+      <ion-icon name="logo-bitcoin"></ion-icon>
+    </button>
+  </ion-fab>
+
 </ion-content>
 
 <ion-footer style="background-color:black">
   <ion-row text-center>
     <ion-col col-4>
       <button ion-button small clear color="light" (click)="goHomeTicketPage()">
-        <ion-icon name="home"> home</ion-icon>
+        <ion-icon name="home"> Home</ion-icon>
 
       </button>
     </ion-col>

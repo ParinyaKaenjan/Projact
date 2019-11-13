@@ -49,6 +49,10 @@ export class ConnectApiProvider {
   public getIDmovie(Id: string) {
     return this.http.get<MovieModel>("https://localhost:5001/api/Movie/getbyID/" + Id);
   }
+  public getMovieByiduser(Id: string) {
+    return this.http.get<MovieModel>("https://localhost:5001/api/Movie/GetMovieofIduser/" + Id);
+    //https://localhost:5001/api/Movie/GetMovieofIduser/2f3d3e59-c01e-4860-b005-16ef6dcf1f04
+  }
   //------ createmovie -------
   public createmovie(createmovie: MovieModel) {
     return this.http.post("https://localhost:5001/api/Movie/Createmovie", createmovie);
@@ -72,11 +76,11 @@ export class ConnectApiProvider {
     return this.http.get("https://localhost:5001/api/Ticket/GetAllTicket");
   }
   public getByidTicket(iduser: string) {
-    return this.http.get("https://localhost:5001/api/Ticket/getbyID/" + iduser);
+    return this.http.get<TicketModel>("https://localhost:5001/api/Ticket/getbyID/" + iduser);
   }
   //-------- use ticket ---------
-  public useticket(id: string, ) {
-    return this.http.post("https://localhost:5001/api/Ticket/UseTicket", id)
-    //https://localhost:5001/api/Ticket/UseTicket/c5c8d80b-3e7b-4fa6-aa90-0cabaf447258
+  public useticket(id: string) {
+    return this.http.post("https://localhost:5001/api/Ticket/UseTicket/", id)
+    //https://localhost:5001/api/Ticket/UseTicket/5065daab-8f09-412d-a01e-4c49f6f85e82
   }
 }

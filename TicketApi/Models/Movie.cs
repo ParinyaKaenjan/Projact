@@ -7,6 +7,7 @@ namespace TicketApi.Models
     {
         [BsonId]
         public string _id { get; set; }
+        public string iduser { get; set; }
         public string img { get; set; }
         public string faculty { get; set; }
         public string showtime { get; set; }

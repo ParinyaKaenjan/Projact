@@ -34,7 +34,8 @@ export class MovietimebookingPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public alrertCtrl: AlertController, public conncetAPI: ConnectApiProvider, public toastCtal: ToastController) {
     this.idmovie = this.navParams.get('_id');
     console.log(this.idmovie);
-    this.ticketmovie.Iduser = this.conncetAPI.user._id;
+    this.ticketmovie.iduser = this.conncetAPI.user._id;
+    this.ticketmovie.idmovie = this.idmovie;
     console.log(this.ticketmovie);
     this.getIdMovie();
     // this.ticketmovie.imgticket = this.navParams.get('img');
@@ -72,8 +73,6 @@ export class MovietimebookingPage {
       console.log(this.faculty);
       console.log(this.ticketvip);
       console.log(this.ticketnomal);
-
-
     });
   }
   godetail(movieM: MovieModel) {
@@ -92,14 +91,16 @@ export class MovietimebookingPage {
     this.ticketmovie.ticketstatus = true
   }
   bookingmovie() {
-    const lol = this.toastCtal.create({
-      message: "กรุณากรอกให้ครบ",
-      duration: 2000
-    });
     const out = this.toastCtal.create({
       message: "ตั๋วที่มีอยู่ไม่เพียงพอ",
       duration: 2000
     });
+
+    const lol = this.toastCtal.create({
+      message: "กรุณากรอกให้ครบ",
+      duration: 2000
+    });
+
     const AlertTotal = this.alrertCtrl.create({
       title: 'แจ้งเตือน',
       message: 'ยืนยันการทำรายการ',
@@ -115,22 +116,21 @@ export class MovietimebookingPage {
           text: "ยืนยัน",
           handler: () => {
             console.log('Agree Cliked')
-            console.log(this.ticketmovie.totalticket);
-            console.log(this.totalticket);
             console.log(this.idmovie);
-            console.log(this.Ticket);
+            console.log(this.totalticket);
+            console.log(this.ticketmovie.totalticket);
             if (this.ticketmovie.totalticket <= this.totalticket) {
-              this.conncetAPI.createticket(this.ticketmovie.Iduser, this.ticketmovie).subscribe(data => {
+              console.log("true");
+
+              this.conncetAPI.createticket(this.ticketmovie.iduser, this.ticketmovie).subscribe(data => {
               });
               this.conncetAPI.cuttotailticket(this.idmovie, this.Ticket).subscribe(data => {
               });
-              this.navCtrl.setRoot(TicketPage);
+              this.navCtrl.pop();
             }
-            else {
-              if (this.ticketmovie.totalticket! > this.totalticket) {
-
-                out.present();
-              }
+            if (this.ticketmovie.totalticket > this.totalticket) {
+              console.log("ตั๋วไม่พอ");
+              out.present();
             }
           }
         }
@@ -143,9 +143,6 @@ export class MovietimebookingPage {
       AlertTotal.present();
       console.log(this.ticketmovie);
     }
+
   }
 }
-
-
-
-

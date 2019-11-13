@@ -18,7 +18,7 @@ import { TicketModel } from '../../models/TicketModel';
 })
 export class TicketPage {
   ticket: any;
-  ticketstatus: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public conectAPI: ConnectApiProvider, public alertCtrl: AlertController) {
     this.getByid();
   }
@@ -40,9 +40,10 @@ export class TicketPage {
     });
   }
 
-  useticket(_id: string, ticketstatus: string) {
+  useticket(_id: string) {
     console.log(_id);
-    console.log(ticketstatus);
+    this.conectAPI.useticket(_id).subscribe(data => {
+    });
 
     const pp = this.alertCtrl.create({
       title: "ยืนยัน",
@@ -53,11 +54,10 @@ export class TicketPage {
       {
         text: "ตกลง",
         handler: () => {
-          this.conectAPI.useticket(_id).subscribe(data => { });
         }
       }]
     });
-    pp.present();
+    //pp.present();
   }
 
   goHomeTicketPage() {

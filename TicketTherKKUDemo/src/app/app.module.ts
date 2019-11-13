@@ -22,6 +22,7 @@ import { TicketPage } from '../pages/ticket/ticket';
 import { ConnectApiProvider } from '../providers/connect-api/connect-api';
 import { DetailmoviePage } from '../pages/detailmovie/detailmovie';
 import { AddmoviePage } from '../pages/addmovie/addmovie';
+import { ViewtotalPage } from '../pages/viewtotal/viewtotal';
 
 // import { LoginNavbarComponent } from '../components/login-navbar/login-navbar';
 // import { AuthService } from '../providers/auth-service/auth-service';
@@ -37,7 +38,8 @@ import { AddmoviePage } from '../pages/addmovie/addmovie';
     MovietimebookingPage,
     TicketPage,
     UserPage,
-    AddmoviePage
+    AddmoviePage,
+    ViewtotalPage
 
   ],
   imports: [
@@ -56,7 +58,8 @@ import { AddmoviePage } from '../pages/addmovie/addmovie';
     DetailmoviePage,
     TicketPage,
     UserPage,
-    AddmoviePage
+    AddmoviePage,
+    ViewtotalPage
 
   ],
   providers: [

@@ -8,6 +8,7 @@ import { UserModel } from '../../models/UsersModel';
 import { ConnectApiProvider } from '../../providers/connect-api/connect-api';
 import { text } from '@angular/core/src/render3/instructions';
 import { AddmoviePage } from '../addmovie/addmovie';
+import { ViewtotalPage } from '../viewtotal/viewtotal';
 
 
 @IonicPage()
@@ -40,15 +41,13 @@ export class UserPage {
   //     console.log(this.userid);
   //     //console.log(this.User);
   //   });
-  // }
-
-  addmovie() {
-    this.navCtrl.push(AddmoviePage);
+  // }}
+  viewtotal() {
+    this.navCtrl.push(ViewtotalPage);
   }
 
   logout() {
     let Chackout = this.alert.create({
-      // title: '',
       message: 'คุณต้องการจะออกจากระบบหรือไม่',
       buttons: [{
         text: 'ยกเลิก',
